@@ -11,7 +11,8 @@ import SwiftUI
 struct FacePartsEditorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            ImageSelectScreen()
         }
     }
 }

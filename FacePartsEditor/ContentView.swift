@@ -70,7 +70,9 @@ struct ContentView: View {
                             imageCropVM.isShowingCropper = true
                         }
                     }) {
-                        ImagePicker(image: self.$image, uiImage: self.$uiImage)
+                        ImagePicker(
+//                            image: self.$image,
+                            uiImage: self.$uiImage)
                     }
                     
                     TextField("Description", text: $description)
@@ -90,23 +92,8 @@ struct ContentView: View {
                 }
             }
             .padding()
-            //            .background(appBackGroundColor)
             .frame(alignment: .top)
-            //            .sheet(isPresented: $showsResultImage) {
-            //
-            //                if let images = resultImages, !images.isEmpty {
-            ////                    ScrollView {
-            //                        HStack {
-            //                            ForEach(Array(images.enumerated()), id: \.offset) { index, image in
-            //                                image
-            //                                    .resizable()
-            //                                    .scaledToFit()
-            //                            }
-            //                        }
-            //                        .frame(maxWidth: .infinity, alignment: .center)
-            ////                    }
-            //                }
-            //            }
+        
             if showsResultImage {
                 //                    ScrollView {
                 VStack {
@@ -138,7 +125,7 @@ struct ContentView: View {
             }
             
             if imageCropVM.isShowingCropper {
-                ImageCropView(inputImage: uiImage, resultImage: $croppedImage)
+                ImageCropView(inputImage: uiImage, resultImage: $croppedImage) {}
             }
         }
         

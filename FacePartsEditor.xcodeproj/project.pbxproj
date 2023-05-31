@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613B9FB62A1E3C9100ECA8B4 /* ImageSelectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B9FB52A1E3C9100ECA8B4 /* ImageSelectScreen.swift */; };
+		613B9FB82A1E51E000ECA8B4 /* ModifierSelectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B9FB72A1E51E000ECA8B4 /* ModifierSelectScreen.swift */; };
 		615F3DC729F532260065BFC9 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615F3DC629F532260065BFC9 /* TitleText.swift */; };
-		617449F129AB6D1200A2F1D4 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617449F029AB6D1200A2F1D4 /* UIImage+.swift */; };
 		617449F429AB70D900A2F1D4 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617449F329AB70D900A2F1D4 /* ImagePicker.swift */; };
 		61B8C0BB29AB557800B33439 /* FacePartsEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0BA29AB557800B33439 /* FacePartsEditorApp.swift */; };
 		61B8C0BD29AB557800B33439 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0BC29AB557800B33439 /* ContentView.swift */; };
@@ -16,7 +17,6 @@
 		61B8C0C229AB557900B33439 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B8C0C129AB557900B33439 /* Preview Assets.xcassets */; };
 		61B8C0CA29AB55EF00B33439 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0C929AB55EF00B33439 /* APIClient.swift */; };
 		61B8C0CC29AB5EB200B33439 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0CB29AB5EB200B33439 /* ImageAPI.swift */; };
-		61B8C0D129AB5F3300B33439 /* TensorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0D029AB5F3300B33439 /* TensorImage.swift */; };
 		61DAF12D2A18902300B2A3C4 /* ImageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */; };
 		61DF6F0129F96BCB00FE8BD0 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */; };
 		61DF6F0329F96BE400FE8BD0 /* ImageCropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */; };
@@ -26,8 +26,9 @@
 /* Begin PBXFileReference section */
 		05B435CA9ED65A581FAEE63C /* Pods-FacePartsEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacePartsEditor.debug.xcconfig"; path = "Target Support Files/Pods-FacePartsEditor/Pods-FacePartsEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		5CA2D655E60FA7101283BC97 /* Pods-FacePartsEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacePartsEditor.release.xcconfig"; path = "Target Support Files/Pods-FacePartsEditor/Pods-FacePartsEditor.release.xcconfig"; sourceTree = "<group>"; };
+		613B9FB52A1E3C9100ECA8B4 /* ImageSelectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectScreen.swift; sourceTree = "<group>"; };
+		613B9FB72A1E51E000ECA8B4 /* ModifierSelectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierSelectScreen.swift; sourceTree = "<group>"; };
 		615F3DC629F532260065BFC9 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
-		617449F029AB6D1200A2F1D4 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		617449F329AB70D900A2F1D4 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		61A46A0529DB10EF007D9E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		61B8C0B729AB557800B33439 /* FacePartsEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacePartsEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +38,6 @@
 		61B8C0C129AB557900B33439 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		61B8C0C929AB55EF00B33439 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		61B8C0CB29AB5EB200B33439 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
-		61B8C0D029AB5F3300B33439 /* TensorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorImage.swift; sourceTree = "<group>"; };
 		61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectView.swift; sourceTree = "<group>"; };
 		61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
 		61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewModel.swift; sourceTree = "<group>"; };
@@ -88,6 +88,8 @@
 				617449F329AB70D900A2F1D4 /* ImagePicker.swift */,
 				61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */,
 				61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */,
+				613B9FB52A1E3C9100ECA8B4 /* ImageSelectScreen.swift */,
+				613B9FB72A1E51E000ECA8B4 /* ModifierSelectScreen.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -145,8 +147,6 @@
 		61B8C0CD29AB5EF900B33439 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				61B8C0D029AB5F3300B33439 /* TensorImage.swift */,
-				617449F029AB6D1200A2F1D4 /* UIImage+.swift */,
 				61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */,
 			);
 			path = model;
@@ -250,15 +250,15 @@
 			files = (
 				61B8C0BD29AB557800B33439 /* ContentView.swift in Sources */,
 				615F3DC729F532260065BFC9 /* TitleText.swift in Sources */,
-				61B8C0D129AB5F3300B33439 /* TensorImage.swift in Sources */,
 				61B8C0BB29AB557800B33439 /* FacePartsEditorApp.swift in Sources */,
+				613B9FB62A1E3C9100ECA8B4 /* ImageSelectScreen.swift in Sources */,
 				617449F429AB70D900A2F1D4 /* ImagePicker.swift in Sources */,
 				61DF6F0129F96BCB00FE8BD0 /* ImageCropView.swift in Sources */,
-				617449F129AB6D1200A2F1D4 /* UIImage+.swift in Sources */,
 				61B8C0CC29AB5EB200B33439 /* ImageAPI.swift in Sources */,
 				61DAF12D2A18902300B2A3C4 /* ImageSelectView.swift in Sources */,
 				61DF6F0329F96BE400FE8BD0 /* ImageCropViewModel.swift in Sources */,
 				61B8C0CA29AB55EF00B33439 /* APIClient.swift in Sources */,
+				613B9FB82A1E51E000ECA8B4 /* ModifierSelectScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +301,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -361,6 +362,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
