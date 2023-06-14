@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImageAPI {
-    static let uploadURL = URL(string: "http://472d-34-126-64-89.ngrok-free.app/abc")!
+    static let uploadURL = URL(string: "http://bb8b-35-198-201-25.ngrok-free.app/process")!
 
     static func uploadImage(image: UIImage, description: String, targetDescription: String, parts: String, completion: @escaping (UIImage) -> Void) {
         let fileName = "uploadedImage.jpg"

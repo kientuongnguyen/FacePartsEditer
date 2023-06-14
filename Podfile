@@ -6,6 +6,5 @@ target 'FacePartsEditor' do
   use_frameworks!
 
   # Pods for FacePartsEditor
-    pod 'LibTorch-Lite', '~> 1.10.0'
 
 end
