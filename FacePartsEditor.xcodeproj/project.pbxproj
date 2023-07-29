@@ -21,6 +21,7 @@
 		61DF6F0129F96BCB00FE8BD0 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */; };
 		61DF6F0329F96BE400FE8BD0 /* ImageCropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */; };
 		B96067C5286782DCBD0F6262 /* Pods_FacePartsEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF27A7C4A7BA70D4A136531 /* Pods_FacePartsEditor.framework */; };
+		F52F91602A3B4612005D86FA /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F915F2A3B4611005D86FA /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
 		61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewModel.swift; sourceTree = "<group>"; };
 		DEF27A7C4A7BA70D4A136531 /* Pods_FacePartsEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FacePartsEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52F915F2A3B4611005D86FA /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */,
 				613B9FB52A1E3C9100ECA8B4 /* ImageSelectScreen.swift */,
 				613B9FB72A1E51E000ECA8B4 /* ModifierSelectScreen.swift */,
+				F52F915F2A3B4611005D86FA /* ResultView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				61B8C0BB29AB557800B33439 /* FacePartsEditorApp.swift in Sources */,
 				613B9FB62A1E3C9100ECA8B4 /* ImageSelectScreen.swift in Sources */,
 				617449F429AB70D900A2F1D4 /* ImagePicker.swift in Sources */,
+				F52F91602A3B4612005D86FA /* ResultView.swift in Sources */,
 				61DF6F0129F96BCB00FE8BD0 /* ImageCropView.swift in Sources */,
 				61B8C0CC29AB5EB200B33439 /* ImageAPI.swift in Sources */,
 				61DAF12D2A18902300B2A3C4 /* ImageSelectView.swift in Sources */,

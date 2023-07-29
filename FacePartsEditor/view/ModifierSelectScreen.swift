@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let SIZE = 180.0
+let SIZE = 250.0
 extension Color {
   init(_ hex: UInt, alpha: Double = 1) {
     self.init(
@@ -30,7 +30,7 @@ struct CustomToggleStyle: ToggleStyle {
         }
         .foregroundColor(configuration.isOn ? .white : .purple)
         .frame(width: 60)
-        .padding()
+        .padding(.vertical, 4)
         .background(configuration.isOn ? Color.pink.opacity(0.4) : Color.clear)
         .cornerRadius(5)
     }
@@ -42,6 +42,17 @@ struct ModifierSelectScreen: View {
     @State var inputDescription: String = "A human face"
     @State var outputDescription: String = ""
     @State var outputImage: UIImage?
+    @State var showsResult = false
+    @State var alpha: CGFloat = 35
+    @State var beta: CGFloat = 15
+    
+    let alphaMin: CGFloat = -100
+    let alphaMax: CGFloat = 100
+    let alphaStep: CGFloat = 1
+    
+    let betaMin: CGFloat = 8
+    let betaMax: CGFloat = 30
+    let betaStep: CGFloat = 1
     
     @State var processing = false
     
@@ -53,62 +64,135 @@ struct ModifierSelectScreen: View {
 
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            // Images
-            HStack {
-                inputImageView
-                Spacer()
-                outputImageView
-            }
-            .frame(maxWidth: .infinity, alignment: .top)
-            .padding(.bottom, 32)
-            
-            // Description
-            Text("Input image description")
-                .padding(.bottom, 10)
-                .bold()
-                .foregroundColor(Color.purple.opacity(0.9))
-            TextField("Enter description for input image", text: $inputDescription)
-                .textFieldStyle(.roundedBorder)
-                .padding(.bottom, 16)
-            
-            Text("Output image description")
-                .padding(.bottom, 10)
-                .padding(.top, 20)
-                .foregroundColor(Color.purple.opacity(0.9))
-                .bold()
-            
-            TextField("Enter description for output image", text: $outputDescription)
-                .textFieldStyle(.roundedBorder)
-                .padding(.bottom, 32)
-
-            // Parts selection
-            Text("Select face parts to modify")
-                .padding(.bottom, 10)
-                .foregroundColor(Color.purple.opacity(0.9))
-            LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()]) {
-                ForEach(Array($selectedList.enumerated()), id: \.offset) {id, $isOn in
-                    Toggle(isOn: $isOn) {
-                        Text(selection[id])
-//                        Image(systemName: selectionImage[id])
-                    }
-                    .toggleStyle(CustomToggleStyle())
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
+                // Images
+                HStack {
+                    inputImageView
+                    Spacer()
+    //                outputImageView
+                    inputSelectPart
                 }
-            }
-            .frame(maxWidth: .infinity)
-            .background(Color(0xe4aadf).opacity(0.6))
-            .cornerRadius(8)
-            .padding(.bottom, 32)
+                .frame(maxWidth: .infinity, alignment: .top)
+                .padding(.bottom, 0)
+                
+                // Description
+                Text("Input image description")
+                    .padding(.bottom, 10)
+                    .bold()
+                    .foregroundColor(Color.purple.opacity(0.9))
+                TextField("Enter description for input image", text: $inputDescription)
+                    .textFieldStyle(.roundedBorder)
+                
+                Text("Output image description")
+                    .padding(.bottom, 10)
+                    .padding(.top, 20)
+                    .foregroundColor(Color.purple.opacity(0.9))
+                    .bold()
+                
+                TextField("Enter description for output image", text: $outputDescription)
+                    .textFieldStyle(.roundedBorder)
+                
+                Text(
+                    String(format: "Alpha: %.2f", alpha / 10)
+//                "\(alpha / 10)"
+                )
+                    .padding(.bottom, 10)
+                    .padding(.top, 20)
+                    .foregroundColor(Color.purple.opacity(0.9))
+                    .bold()
+                Slider(
+                    value: $alpha,
+                    in: alphaMin...alphaMax,
+                    step: alphaStep
+                ) {
+                    Text("alpha")
+                } minimumValueLabel: {
+                    Text("-10")
+                } maximumValueLabel: {
+                    Text("10")
+                } onEditingChanged: { alpha in
+                }
+                
+                Text(
+                    String(format: "Beta: %.2f", beta / 100)
+//                    "\(beta / 100)"
+                )
+                    .padding(.bottom, 10)
+                    .padding(.top, 20)
+                    .foregroundColor(Color.purple.opacity(0.9))
+                    .bold()
+                Slider(
+                    value: $beta,
+                    in: betaMin...betaMax,
+                    step: betaStep
+                ){
+                    Text("beta")
+                } minimumValueLabel: {
+                    Text("0.08")
+                } maximumValueLabel: {
+                    Text("0.3")
+                }
 
-            // Action Button
-            VStack(alignment: .center) {
-                actionButton
+                // Parts selection
+    //            Text("Select face parts to modify")
+    //                .padding(.bottom, 10)
+    //                .foregroundColor(Color.purple.opacity(0.9))
+    //            LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()]) {
+    //                ForEach(Array($selectedList.enumerated()), id: \.offset) {id, $isOn in
+    //                    Toggle(isOn: $isOn) {
+    //                        Text(selection[id])
+    ////                        Image(systemName: selectionImage[id])
+    //                    }
+    //                    .toggleStyle(CustomToggleStyle())
+    //                }
+    //            }
+    //            .frame(maxWidth: .infinity)
+    //            .background(Color(0xe4aadf).opacity(0.6))
+    //            .cornerRadius(8)
+    //            .padding(.bottom, 32)
+                
+                
+
+
+
+                // Action Button
+                VStack(alignment: .center) {
+                    actionButton
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(20)
+
+            if (processing) {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.4))
+            }
         }
-        .padding(20)
+        .sheet(isPresented: $showsResult) {
+            
+            ResultView(outputImage: inputImage, inputImage: inputImage)
+        }
     }
     
+    private var inputSelectPart: some View {
+        LazyVGrid(columns: [GridItem()], spacing: 2) {
+            ForEach(Array($selectedList.enumerated()), id: \.offset) {id, $isOn in
+                Toggle(isOn: $isOn) {
+                    Text(selection[id])
+//                        Image(systemName: selectionImage[id])
+                }
+                .toggleStyle(CustomToggleStyle())
+            }
+        }
+        .frame(width: 80)
+        .background(Color(0xe4aadf).opacity(0.6))
+        .cornerRadius(8)
+        .padding(.bottom, 20)
+    }
     private var inputImageView: some View {
         Image(uiImage: inputImage)
             .resizable()
@@ -116,30 +200,30 @@ struct ModifierSelectScreen: View {
             .frame(width: SIZE, height: SIZE)
     }
     
-    private var outputImageView: some View {
-        VStack {
-            
-            if let outputImage = outputImage {
-                Image(uiImage: outputImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: SIZE, height: SIZE)
-            } else {
-                VStack {
-                    if processing {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .scaleEffect(2)
-                    } else {
-                        EmptyView()
-                    }
-                }
-                .frame(width: SIZE, height: SIZE)
-                .background(Color.black.opacity(0.5))
-                .edgesIgnoringSafeArea(.all)
-            }
-        }
-    }
+//    private var outputImageView: some View {
+//        VStack {
+//
+//            if let outputImage = outputImage {
+//                Image(uiImage: outputImage)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: SIZE, height: SIZE)
+//            } else {
+//                VStack {
+//                    if processing {
+//                        ProgressView()
+//                            .progressViewStyle(CircularProgressViewStyle())
+//                            .scaleEffect(2)
+//                    } else {
+//                        EmptyView()
+//                    }
+//                }
+//                .frame(width: SIZE, height: SIZE)
+//                .background(Color.black.opacity(0.5))
+//                .edgesIgnoringSafeArea(.all)
+//            }
+//        }
+//    }
     
     private var actionButton: some View {
         Button {
@@ -155,6 +239,11 @@ struct ModifierSelectScreen: View {
         processing = true
         outputImage = nil
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            processing = false
+            showsResult = true
+        }
+        
         var selectedPart: [String] = []
         selectedList.enumerated().forEach { idx, isSelected in
             if isSelected {
@@ -167,7 +256,9 @@ struct ModifierSelectScreen: View {
             image: inputImage,
             description: inputDescription,
             targetDescription: outputDescription,
-            parts: selectedPart.joined(separator: ",")
+            parts: selectedPart.joined(separator: ","),
+            alpha: alpha / 10,
+            beta: beta / 100
         ) { image in
             processing = false
             outputImage = image

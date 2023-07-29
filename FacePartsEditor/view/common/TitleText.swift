@@ -2,7 +2,7 @@
 //  TitleText.swift
 //  FacePartsEditor
 //
-//  Created by Nguyễn Kiến Tường on 23/04/2023.
+//  Created by Trần Cao Khánh Ngọc on 23/04/2023.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  ImageCropView.swift
 //  FacePartsEditor
 //
-//  Created by Nguyễn Kiến Tường on 26/04/2023.
+//  Created by Trần Cao Khánh Ngọc on 26/04/2023.
 //
 
 import SwiftUI

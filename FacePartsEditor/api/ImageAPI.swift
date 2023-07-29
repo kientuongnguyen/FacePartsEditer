@@ -2,16 +2,16 @@
 //  ImageAPI.swift
 //  FacePartsEditor
 //
-//  Created by Nguyễn Kiến Tường on 26/02/2023.
+//  Created by Trần Cao Khánh Ngọc on 26/02/2023.
 //
 
 import Foundation
 import UIKit
 
 class ImageAPI {
-    static let uploadURL = URL(string: "http://bb8b-35-198-201-25.ngrok-free.app/process")!
+    static let uploadURL = URL(string: "http://cb73-35-240-131-74.ngrok-free.app/process")!
 
-    static func uploadImage(image: UIImage, description: String, targetDescription: String, parts: String, completion: @escaping (UIImage) -> Void) {
+    static func uploadImage(image: UIImage, description: String, targetDescription: String, parts: String, alpha: CGFloat, beta: CGFloat, completion: @escaping (UIImage) -> Void) {
         let fileName = "uploadedImage.jpg"
         let url = uploadURL
         
@@ -27,6 +27,10 @@ class ImageAPI {
         let parameter1Data = parameter1.data(using: .utf8)!
         let parameter2 = targetDescription
         let parameter2Data = parameter2.data(using: .utf8)!
+        let alphaString = "\(alpha)"
+        let alphaData = alphaString.data(using: .utf8)!
+        let betaString = "\(beta)"
+        let betaData = betaString.data(using: .utf8)!
         let intListData = parts
         let parameterData = intListData.data(using: .utf8)!
         
@@ -43,6 +47,12 @@ class ImageAPI {
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         data.append("Content-Disposition: form-data; name=\"parameter2\"\r\n\r\n".data(using: .utf8)!)
         data.append(parameter2Data)
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"alpha\"\r\n\r\n".data(using: .utf8)!)
+        data.append(alphaData)
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"beta\"\r\n\r\n".data(using: .utf8)!)
+        data.append(betaData)
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         data.append("Content-Disposition: form-data; name=\"parts\"\r\n\r\n".data(using: .utf8)!)
         data.append(parameterData)

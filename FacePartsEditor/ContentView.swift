@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  FacePartsEditor
 //
-//  Created by Nguyễn Kiến Tường on 26/02/2023.
+//  Created by Trần Cao Khánh Ngọc on 26/02/2023.
 //
 
 import SwiftUI
@@ -40,6 +40,8 @@ struct ContentView: View {
     
     @State var description: String = ""
     @State var targetDescription: String = ""
+    @State var alpha: CGFloat = 3.5
+    @State var beta: CGFloat = 0.15
     
     @State var selectedList: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
@@ -143,7 +145,7 @@ struct ContentView: View {
                     selectedPart.append("\(idx)")
                 }
             }
-            ImageAPI.uploadImage(image: uiImage, description: description, targetDescription: targetDescription, parts: selectedPart.joined(separator: ",")) { image in
+            ImageAPI.uploadImage(image: uiImage, description: description, targetDescription: targetDescription, parts: selectedPart.joined(separator: ","), alpha: alpha, beta: beta) { image in
                 resultImages?.append(Image(uiImage: image))
                 //                showsResultImage = true
             }

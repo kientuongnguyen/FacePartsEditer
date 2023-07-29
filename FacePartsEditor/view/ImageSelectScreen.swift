@@ -2,7 +2,7 @@
 //  ImageSelectScreen.swift
 //  FacePartsEditor
 //
-//  Created by Nguyễn Kiến Tường on 24/05/2023.
+//  Created by Trần Cao Khánh Ngọc on 24/05/2023.
 //
 
 import SwiftUI
