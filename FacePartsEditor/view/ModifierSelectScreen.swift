@@ -86,7 +86,7 @@ struct ModifierSelectScreen: View {
                 
                 Text("Output image description")
                     .padding(.bottom, 10)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
                     .foregroundColor(Color.purple.opacity(0.9))
                     .bold()
                 
@@ -119,7 +119,7 @@ struct ModifierSelectScreen: View {
 //                    "\(beta / 100)"
                 )
                     .padding(.bottom, 10)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
                     .foregroundColor(Color.purple.opacity(0.9))
                     .bold()
                 Slider(
@@ -161,6 +161,7 @@ struct ModifierSelectScreen: View {
                     actionButton
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 10)
             }
             .padding(20)
 
@@ -231,8 +232,12 @@ struct ModifierSelectScreen: View {
         } label: {
             Text("Process")
         }
-        .buttonStyle(.borderedProminent)
-        
+        .frame(maxWidth: .infinity)
+        .padding(8)
+        .foregroundColor(.white)
+        .background(Color.blue)
+        .cornerRadius(8)
+
     }
     
     private func process() {

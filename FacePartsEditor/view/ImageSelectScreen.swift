@@ -71,17 +71,29 @@ struct ImageSelectScreen: View {
                 } label: {
                     Text("Re - Select")
                 }
-                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                .padding(8)
+                .foregroundColor(.white)
+                .background(croppedImage == nil ? Color.gray : Color.blue)
+                .cornerRadius(8)
                 .disabled(croppedImage == nil)
-                
+
                 Button {
                     showsModificationSelection = true
                 } label: {
                     Text("Select")
                 }
-                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                .padding(8)
+                .foregroundColor(.white)
+                .background(croppedImage == nil ? Color.gray : Color.blue)
+                .cornerRadius(8)
+                .disabled(croppedImage == nil)
+
             }
-            
+            .padding(20)
+            .frame(maxWidth: .infinity)
+
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)

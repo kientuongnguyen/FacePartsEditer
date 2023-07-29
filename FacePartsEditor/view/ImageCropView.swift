@@ -47,11 +47,12 @@ struct ImageCropView: View {
     
     var body: some View {
         GeometryReader { geo in
-            ZStack {
+            ZStack(alignment: .bottom) {
                 if let inputImage = inputImage {
                     Image(uiImage: inputImage)
                         .resizable()
                         .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     
                     CropOverlay(cropRect: $cropper, inputImage: inputImage)
                     
@@ -64,8 +65,13 @@ struct ImageCropView: View {
                     } label: {
                         Text("Crop")
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(12)
+                    .padding(12)
                 }
-                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
