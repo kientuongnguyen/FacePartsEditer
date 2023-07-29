@@ -8,23 +8,40 @@
 import SwiftUI
 
 struct ResultView: View {
-    var outputImage: UIImage
+    var outputImage: UIImage?
     var inputImage: UIImage
     
     var body: some View {
         VStack {
-            Image(uiImage: outputImage)
+            VStack {
+                if let outputImage = outputImage {
+                    Image(uiImage: outputImage)
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2)
+                }
+            }
+            .frame(height: 400)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .background(outputImage == nil ? Color.black.opacity(0.4) : Color.clear)
+            .padding()
+            
             Spacer()
+
             HStack {
                 Spacer()
                 Image(uiImage: inputImage)
                     .resizable()
+                    .frame(width: 200, height: 200)
                     .scaledToFit()
-                    .scaleEffect(0.5)
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .bottom)
+            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .padding()
     }
     
 }
+

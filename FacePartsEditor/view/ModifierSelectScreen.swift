@@ -57,7 +57,7 @@ struct ModifierSelectScreen: View {
     @State var processing = false
     
     @State var selectedList: [Bool] = [false, false, false, false, false, false, false, false, false, false]
-    @State var test: [[Int]] = [[0], [1, 2], [3, 4], [5], [6], [7, 8, 9], [10]]
+    @State var test: [[Int]] = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]
     var selection = ["face", "lb", "rb", "le", "re", "nose","ulip", "llip", "imouth", "hair"]
 //    var selection = ["Face", "eyes brown", "eyes", "nose","mouth", "hair"]
 //    var selectionImage = ["face.smiling", "eyebrow", "eye", "nose","mouth", "hair"]
@@ -174,7 +174,7 @@ struct ModifierSelectScreen: View {
         }
         .sheet(isPresented: $showsResult) {
             
-            ResultView(outputImage: inputImage, inputImage: inputImage)
+            ResultView(outputImage: outputImage, inputImage: inputImage)
         }
     }
     
@@ -247,8 +247,9 @@ struct ModifierSelectScreen: View {
         var selectedPart: [String] = []
         selectedList.enumerated().forEach { idx, isSelected in
             if isSelected {
-//                selectedPart.append("\(test[idx])")
-                selectedPart.append("\(idx)")
+                selectedPart.append(contentsOf: test[idx].map { "\($0)" })
+//                selectedPart.append(test[idx].map { "\($0)" }.joined(separator: ","))
+//                selectedPart.append("\(idx)")
             }
         }
         
