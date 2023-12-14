@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ResultView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var outputImage: UIImage?
     var inputImage: UIImage
+    @State var showOutput = true
+
+    @State var presentSavedToLib = false
     
     var body: some View {
         VStack {
             VStack {
                 if let outputImage = outputImage {
-                    Image(uiImage: outputImage)
+                    Image(uiImage: showOutput ? outputImage : inputImage)
+                        .resizable()
+                        .scaledToFit()
                 } else {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -26,21 +33,53 @@ struct ResultView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .background(outputImage == nil ? Color.black.opacity(0.4) : Color.clear)
             .padding()
+            .onTapGesture {
+                showOutput = !showOutput
+            }
             
             Spacer()
-
+            
             HStack {
-                Spacer()
                 Image(uiImage: inputImage)
                     .resizable()
-                    .frame(width: 200, height: 200)
                     .scaledToFit()
+                    .frame(width: 200)
             }
-            .frame(maxWidth: .infinity, alignment: .bottom)
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
             .padding()
+            
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Cancel")
+            }
+            .frame(maxWidth: .infinity)
+            .padding(8)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(8)
+ 
+            Button {
+                guard let image = outputImage else { return }
+
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: image) {
+                    presentSavedToLib = true
+                }
+            } label: {
+                Text("Save")
+            }
+            .frame(maxWidth: .infinity)
+            .padding(8)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(8)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .padding()
+        .alert(isPresented: $presentSavedToLib) {
+            Alert(title: Text("Image Saved!!!"))
+        }
     }
     
 }
