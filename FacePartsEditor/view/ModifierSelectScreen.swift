@@ -56,7 +56,7 @@ struct ModifierSelectScreen: View {
     
     @State var processing = false
     
-    @State var selectedList: [Bool] = [false, false, false, false, false, false, false, false, false, false]
+    @State var selectedList: [Bool] = [true, false, false, false, false, false, false, false, false, false]
     @State var test: [[Int]] = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]
     var selection = ["face", "lb", "rb", "le", "re", "nose","ulip", "llip", "imouth", "hair"]
 //    var selection = ["Face", "eyes brown", "eyes", "nose","mouth", "hair"]
