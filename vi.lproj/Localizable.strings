@@ -16,6 +16,8 @@
 "Process" = "Xử lý";
 "Close" = "Đóng";
 "Save" = "Lưu";
+"Alpha" = "Cường độ thao tác";
+"Beta" = "Ngưỡng phân tách";
 "A human face" = "Một gương mặt người";
 "Input image description" = "Mô tả ảnh nguồn";
 "Enter description for input image" = "Nhập mô tả cho ảnh nguồn";

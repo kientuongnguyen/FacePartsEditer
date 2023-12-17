@@ -91,7 +91,7 @@ struct ModifierSelectScreen: View {
                     .textFieldStyle(.roundedBorder)
                 
                 Text(
-                    String(format: "Alpha: %.2f", alpha / 10)
+                    "Alpha".localized(languageVM.currentLanguage) + String(format: ": %.2f", alpha / 10)
                 )
                     .padding(.bottom, 10)
                     .padding(.top, 20)
@@ -102,7 +102,7 @@ struct ModifierSelectScreen: View {
                     in: alphaMin...alphaMax,
                     step: alphaStep
                 ) {
-                    Text("alpha")
+                    Text("alpha".localized(languageVM.currentLanguage))
                 } minimumValueLabel: {
                     Text("-10")
                 } maximumValueLabel: {
@@ -111,7 +111,7 @@ struct ModifierSelectScreen: View {
                 }
                 
                 Text(
-                    String(format: "Beta: %.2f", beta / 100)
+                    "Beta".localized(languageVM.currentLanguage) + String(format: ": %.2f", beta / 100)
 //                    "\(beta / 100)"
                 )
                     .padding(.bottom, 10)
@@ -123,7 +123,7 @@ struct ModifierSelectScreen: View {
                     in: betaMin...betaMax,
                     step: betaStep
                 ){
-                    Text("beta")
+                    Text("beta".localized(languageVM.currentLanguage))
                 } minimumValueLabel: {
                     Text("0.08")
                 } maximumValueLabel: {

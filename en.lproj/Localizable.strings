@@ -16,6 +16,8 @@
 "Process" = "Process";
 "Close" = "Close";
 "Save" = "Save";
+"Alpha" = "Manipulation strength";
+"Beta" = "Disentanglement threshold";
 "A human face" = "A human face";
 "Input image description" = "Input image description";
 "Enter description for input image" = "Enter description for input image";
