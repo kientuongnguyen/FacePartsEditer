@@ -17,6 +17,8 @@
 		61B8C0C229AB557900B33439 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B8C0C129AB557900B33439 /* Preview Assets.xcassets */; };
 		61B8C0CA29AB55EF00B33439 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0C929AB55EF00B33439 /* APIClient.swift */; };
 		61B8C0CC29AB5EB200B33439 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B8C0CB29AB5EB200B33439 /* ImageAPI.swift */; };
+		61BB17AF2B2E9F5B000C943E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61BB17B12B2E9F5B000C943E /* Localizable.strings */; };
+		61BB17B82B2EA9A7000C943E /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB17B72B2EA9A7000C943E /* LanguageViewModel.swift */; };
 		61DAF12D2A18902300B2A3C4 /* ImageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */; };
 		61DF6F0129F96BCB00FE8BD0 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */; };
 		61DF6F0329F96BE400FE8BD0 /* ImageCropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */; };
@@ -40,6 +42,9 @@
 		61B8C0C129AB557900B33439 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		61B8C0C929AB55EF00B33439 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		61B8C0CB29AB5EB200B33439 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
+		61BB17B02B2E9F5B000C943E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		61BB17B42B2E9FEC000C943E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		61BB17B72B2EA9A7000C943E /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		61DAF12C2A18902300B2A3C4 /* ImageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectView.swift; sourceTree = "<group>"; };
 		61DF6F0029F96BCB00FE8BD0 /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
 		61DF6F0229F96BE400FE8BD0 /* ImageCropViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewModel.swift; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 		61B8C0AE29AB557800B33439 = {
 			isa = PBXGroup;
 			children = (
+				61BB17B12B2E9F5B000C943E /* Localizable.strings */,
 				61B8C0B929AB557800B33439 /* FacePartsEditor */,
 				61B8C0B829AB557800B33439 /* Products */,
 				20D72893939D34F60008A5C8 /* Pods */,
@@ -129,6 +135,7 @@
 				61B8C0BC29AB557800B33439 /* ContentView.swift */,
 				61B8C0BE29AB557900B33439 /* Assets.xcassets */,
 				61B8C0C029AB557900B33439 /* Preview Content */,
+				61BB17B72B2EA9A7000C943E /* LanguageViewModel.swift */,
 			);
 			path = FacePartsEditor;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 61B8C0AE29AB557800B33439;
 			productRefGroup = 61B8C0B829AB557800B33439 /* Products */;
@@ -226,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B8C0C229AB557900B33439 /* Preview Assets.xcassets in Resources */,
+				61BB17AF2B2E9F5B000C943E /* Localizable.strings in Resources */,
 				61B8C0BF29AB557900B33439 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +273,7 @@
 			files = (
 				61B8C0BD29AB557800B33439 /* ContentView.swift in Sources */,
 				615F3DC729F532260065BFC9 /* TitleText.swift in Sources */,
+				61BB17B82B2EA9A7000C943E /* LanguageViewModel.swift in Sources */,
 				61B8C0BB29AB557800B33439 /* FacePartsEditorApp.swift in Sources */,
 				613B9FB62A1E3C9100ECA8B4 /* ImageSelectScreen.swift in Sources */,
 				617449F429AB70D900A2F1D4 /* ImagePicker.swift in Sources */,
@@ -280,11 +290,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		61BB17B12B2E9F5B000C943E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61BB17B02B2E9F5B000C943E /* en */,
+				61BB17B42B2E9FEC000C943E /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		61B8C0C329AB557900B33439 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -317,7 +340,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -346,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -390,6 +413,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

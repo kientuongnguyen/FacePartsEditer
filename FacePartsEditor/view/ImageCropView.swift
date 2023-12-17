@@ -12,6 +12,7 @@ let initSize = CGSize(width: 320, height: 320)
 
 struct ImageCropView: View {
     @StateObject private var imageCropVM = ImageCropViewModel.shared
+    @ObservedObject private var languageVM = LanguageViewModel.shared
     
     @State private var cropper = CGRect(origin: initPosition, size: initSize)
     @State private var imageSize: CGSize = .zero
@@ -63,7 +64,7 @@ struct ImageCropView: View {
                         imageCropVM.isShowingCropper = false
                         completion()
                     } label: {
-                        Text("Crop")
+                        Text("Crop".localized(languageVM.currentLanguage))
                     }
                     .frame(maxWidth: .infinity)
                     .padding(8)

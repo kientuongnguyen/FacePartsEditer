@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  FacePartsEditor
+
+  Created by Trần Cao Khánh Ngọc on 17/12/2023.
+  
+*/
+
+"Tap to select Image" = "Tap để chọn ảnh";
+"Re - Select" = "Chọn lại";
+"Select" = "Chọn";
+"English" = "Tiếng Anh";
+"Vietnamese" = "Tiếng Việt";
+"Display Language" = "Ngôn ngữ hiển thị";
+"Crop" = "Cắt";
+"Process" = "Xử lý";
+"Close" = "Đóng";
+"Save" = "Lưu";
+"A human face" = "Một gương mặt người";
+"Input image description" = "Mô tả ảnh nguồn";
+"Enter description for input image" = "Nhập mô tả cho ảnh nguồn";
+"Output image description" = "Mô tả ảnh kết quả";
+"Enter description for output image" = "Nhập mô tả cho ảnh kết quả";

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ResultView: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject private var languageVM = LanguageViewModel.shared
 
     var outputImage: UIImage?
     var inputImage: UIImage
@@ -51,7 +53,7 @@ struct ResultView: View {
             Button {
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Cancel")
+                Text("Close".localized(languageVM.currentLanguage))
             }
             .frame(maxWidth: .infinity)
             .padding(8)
@@ -67,7 +69,7 @@ struct ResultView: View {
                     presentSavedToLib = true
                 }
             } label: {
-                Text("Save")
+                Text("Save".localized(languageVM.currentLanguage))
             }
             .frame(maxWidth: .infinity)
             .padding(8)

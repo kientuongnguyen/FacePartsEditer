@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ImageSelectScreen: View {
     @ObservedObject var imageCropVM = ImageCropViewModel.shared
+    @ObservedObject var languageVM = LanguageViewModel.shared
     
     @State var croppedImage: UIImage?
     @State var pickedImage: UIImage?
@@ -37,7 +38,7 @@ struct ImageSelectScreen: View {
                             .frame(height: 320)
                     } else {
                         VStack {
-                            Text("Tap to select Image")
+                            Text("Tap to select Image".localized(languageVM.currentLanguage))
                         }
                         .frame(width: 320, height: 480)
                         .contentShape(Rectangle())
@@ -69,7 +70,7 @@ struct ImageSelectScreen: View {
                     isLoading = true
                     showsImagePicker = true
                 } label: {
-                    Text("Re - Select")
+                    Text("Re - Select".localized(languageVM.currentLanguage))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(8)
@@ -81,7 +82,7 @@ struct ImageSelectScreen: View {
                 Button {
                     showsModificationSelection = true
                 } label: {
-                    Text("Select")
+                    Text("Select".localized(languageVM.currentLanguage))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(8)
@@ -89,6 +90,32 @@ struct ImageSelectScreen: View {
                 .background(croppedImage == nil ? Color.gray : Color.blue)
                 .cornerRadius(8)
                 .disabled(croppedImage == nil)
+                
+                Spacer()
+                
+                HStack {
+                    Text("Display Language".localized(languageVM.currentLanguage))
+                    
+                    Button {
+                        languageVM.currentLanguage = .ENGLISH
+                    } label: {
+                        Text("English".localized(languageVM.currentLanguage))
+                    }
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(languageVM.currentLanguage != .ENGLISH ? Color.gray : Color.blue)
+                    .cornerRadius(8)
+                    
+                    Button {
+                        languageVM.currentLanguage = .VIETNAMESE
+                    } label: {
+                        Text("Vietnamese".localized(languageVM.currentLanguage))
+                    }
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(languageVM.currentLanguage != .VIETNAMESE ? Color.gray : Color.blue)
+                    .cornerRadius(8)
+                }
 
             }
             .padding(20)
@@ -119,11 +146,5 @@ struct ImageSelectScreen: View {
                 ImagePicker(
                     uiImage: self.$pickedImage)
             }
-    }
-}
-
-struct ImageSelectScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageSelectScreen()
     }
 }

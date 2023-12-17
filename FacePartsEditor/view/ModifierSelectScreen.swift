@@ -37,9 +37,10 @@ struct CustomToggleStyle: ToggleStyle {
 }
 
 struct ModifierSelectScreen: View {
+    @ObservedObject private var languageVM = LanguageViewModel.shared
     var inputImage: UIImage
     
-    @State var inputDescription: String = "A human face"
+    @State var inputDescription: String = "A human face".localized(LanguageViewModel.shared.currentLanguage)
     @State var outputDescription: String = ""
     @State var outputImage: UIImage?
     @State var showsResult = false
@@ -58,11 +59,8 @@ struct ModifierSelectScreen: View {
     
     @State var selectedList: [Bool] = [true, false, false, false, false, false, false, false, false, false]
     @State var test: [[Int]] = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]
-    var selection = ["face", "lb", "rb", "le", "re", "nose","ulip", "llip", "imouth", "hair"]
-//    var selection = ["Face", "eyes brown", "eyes", "nose","mouth", "hair"]
-//    var selectionImage = ["face.smiling", "eyebrow", "eye", "nose","mouth", "hair"]
+    var selection = ["face", "eyebrow-left", "eyebrow-right", "eye-left", "eye-right", "nose","ulip", "llip", "mouth", "hair"]
 
-    
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
@@ -70,32 +68,30 @@ struct ModifierSelectScreen: View {
                 HStack {
                     inputImageView
                     Spacer()
-    //                outputImageView
                     inputSelectPart
                 }
                 .frame(maxWidth: .infinity, alignment: .top)
                 .padding(.bottom, 0)
                 
                 // Description
-                Text("Input image description")
+                Text("Input image description".localized(languageVM.currentLanguage))
                     .padding(.bottom, 10)
                     .bold()
                     .foregroundColor(Color.purple.opacity(0.9))
-                TextField("Enter description for input image", text: $inputDescription)
+                TextField("Enter description for input image".localized(languageVM.currentLanguage), text: $inputDescription)
                     .textFieldStyle(.roundedBorder)
                 
-                Text("Output image description")
+                Text("Output image description".localized(languageVM.currentLanguage))
                     .padding(.bottom, 10)
                     .padding(.top, 10)
                     .foregroundColor(Color.purple.opacity(0.9))
                     .bold()
                 
-                TextField("Enter description for output image", text: $outputDescription)
+                TextField("Enter description for output image".localized(languageVM.currentLanguage), text: $outputDescription)
                     .textFieldStyle(.roundedBorder)
                 
                 Text(
                     String(format: "Alpha: %.2f", alpha / 10)
-//                "\(alpha / 10)"
                 )
                     .padding(.bottom, 10)
                     .padding(.top, 20)
@@ -134,28 +130,6 @@ struct ModifierSelectScreen: View {
                     Text("0.3")
                 }
 
-                // Parts selection
-    //            Text("Select face parts to modify")
-    //                .padding(.bottom, 10)
-    //                .foregroundColor(Color.purple.opacity(0.9))
-    //            LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()]) {
-    //                ForEach(Array($selectedList.enumerated()), id: \.offset) {id, $isOn in
-    //                    Toggle(isOn: $isOn) {
-    //                        Text(selection[id])
-    ////                        Image(systemName: selectionImage[id])
-    //                    }
-    //                    .toggleStyle(CustomToggleStyle())
-    //                }
-    //            }
-    //            .frame(maxWidth: .infinity)
-    //            .background(Color(0xe4aadf).opacity(0.6))
-    //            .cornerRadius(8)
-    //            .padding(.bottom, 32)
-                
-                
-
-
-
                 // Action Button
                 VStack(alignment: .center) {
                     actionButton
@@ -183,7 +157,17 @@ struct ModifierSelectScreen: View {
         LazyVGrid(columns: [GridItem()], spacing: 2) {
             ForEach(Array($selectedList.enumerated()), id: \.offset) {id, $isOn in
                 Toggle(isOn: $isOn) {
-                    Text(selection[id])
+                    if let uiImage = UIImage(named: selection[id]) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .interpolation(.high)
+                            .scaledToFit()
+                            .frame(height: 25)
+
+                    } else {
+                        Text(selection[id])
+
+                    }
 //                        Image(systemName: selectionImage[id])
                 }
                 .toggleStyle(CustomToggleStyle())
@@ -230,7 +214,7 @@ struct ModifierSelectScreen: View {
         Button {
             process()
         } label: {
-            Text("Process")
+            Text("Process".localized(languageVM.currentLanguage))
         }
         .frame(maxWidth: .infinity)
         .padding(8)

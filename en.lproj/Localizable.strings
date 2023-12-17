@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  FacePartsEditor
+
+  Created by Trần Cao Khánh Ngọc on 17/12/2023.
+  
+*/
+
+"Tap to select Image" = "Tap to select Image";
+"Re - Select" = "Re - Select";
+"Select" = "Select";
+"English" = "English";
+"Vietnamese" = "Vietnamese";
+"Display Language" = "Display Language";
+"Crop" = "Crop";
+"Process" = "Process";
+"Close" = "Close";
+"Save" = "Save";
+"A human face" = "A human face";
+"Input image description" = "Input image description";
+"Enter description for input image" = "Enter description for input image";
+"Output image description" = "Output image description";
+"Enter description for output image" = "Enter description for output image";
