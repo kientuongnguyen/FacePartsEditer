@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImageAPI {
-    static let baseURLString = "http://728a-34-81-32-4.ngrok-free.app/"
+    static let baseURLString = "http://4e5d-35-237-140-91.ngrok-free.app/"
     static let uploadURL = URL(string: "\(baseURLString)process")!
     static let alignURL = URL(string: "\(baseURLString)align")!
 

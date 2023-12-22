@@ -90,45 +90,45 @@ struct ModifierSelectScreen: View {
                 TextField("Enter description for output image".localized(languageVM.currentLanguage), text: $outputDescription)
                     .textFieldStyle(.roundedBorder)
                 
-                Text(
-                    "Alpha".localized(languageVM.currentLanguage) + String(format: ": %.2f", alpha / 10)
-                )
-                    .padding(.bottom, 10)
-                    .padding(.top, 20)
-                    .foregroundColor(Color.purple.opacity(0.9))
-                    .bold()
-                Slider(
-                    value: $alpha,
-                    in: alphaMin...alphaMax,
-                    step: alphaStep
-                ) {
-                    Text("alpha".localized(languageVM.currentLanguage))
-                } minimumValueLabel: {
-                    Text("-10")
-                } maximumValueLabel: {
-                    Text("10")
-                } onEditingChanged: { alpha in
-                }
-                
-                Text(
-                    "Beta".localized(languageVM.currentLanguage) + String(format: ": %.2f", beta / 100)
-//                    "\(beta / 100)"
-                )
-                    .padding(.bottom, 10)
-                    .padding(.top, 10)
-                    .foregroundColor(Color.purple.opacity(0.9))
-                    .bold()
-                Slider(
-                    value: $beta,
-                    in: betaMin...betaMax,
-                    step: betaStep
-                ){
-                    Text("beta".localized(languageVM.currentLanguage))
-                } minimumValueLabel: {
-                    Text("0.08")
-                } maximumValueLabel: {
-                    Text("0.3")
-                }
+//                Text(
+//                    "Alpha".localized(languageVM.currentLanguage) + String(format: ": %.2f", alpha / 10)
+//                )
+//                    .padding(.bottom, 10)
+//                    .padding(.top, 20)
+//                    .foregroundColor(Color.purple.opacity(0.9))
+//                    .bold()
+//                Slider(
+//                    value: $alpha,
+//                    in: alphaMin...alphaMax,
+//                    step: alphaStep
+//                ) {
+//                    Text("alpha".localized(languageVM.currentLanguage))
+//                } minimumValueLabel: {
+//                    Text("-10")
+//                } maximumValueLabel: {
+//                    Text("10")
+//                } onEditingChanged: { alpha in
+//                }
+//                
+//                Text(
+//                    "Beta".localized(languageVM.currentLanguage) + String(format: ": %.2f", beta / 100)
+////                    "\(beta / 100)"
+//                )
+//                    .padding(.bottom, 10)
+//                    .padding(.top, 10)
+//                    .foregroundColor(Color.purple.opacity(0.9))
+//                    .bold()
+//                Slider(
+//                    value: $beta,
+//                    in: betaMin...betaMax,
+//                    step: betaStep
+//                ){
+//                    Text("beta".localized(languageVM.currentLanguage))
+//                } minimumValueLabel: {
+//                    Text("0.08")
+//                } maximumValueLabel: {
+//                    Text("0.3")
+//                }
 
                 // Action Button
                 VStack(alignment: .center) {
@@ -234,21 +234,41 @@ struct ModifierSelectScreen: View {
         }
         
         var selectedPart: [String] = []
+        var selectedIdx: [Int] = []
         selectedList.enumerated().forEach { idx, isSelected in
             if isSelected {
                 selectedPart.append(contentsOf: test[idx].map { "\($0)" })
+                selectedIdx.append(idx)
 //                selectedPart.append(test[idx].map { "\($0)" }.joined(separator: ","))
 //                selectedPart.append("\(idx)")
             }
         }
+//        let betasMap = [0.18, 0.17, 0.17, 0.19, 0.19, 0.15, 0.19, 0.19, 0.19, 0.18]
+//        let betasMap = [0.12, 0.11, 0.11, 0.13, 0.13, 0.09, 0.13, 0.13, 0.13, 0.12]
+        let betasMap = [0.12, 0.11, 0.11, 0.13, 0.13, 0.09, 0.15, 0.15, 0.15, 0.12]
+
+        var sum = 0.0
+        var count = 0.0
+        
+        selectedIdx.forEach { idx in
+                sum += betasMap[idx]
+                count += 1
+        }
+        let beta = round((sum / count) * 100) / 100.0
+        
+        
+        print("final beta: \(beta)")
         
         ImageAPI.uploadImage(
             image: inputImage,
             description: inputDescription,
             targetDescription: outputDescription,
             parts: selectedPart.joined(separator: ","),
-            alpha: alpha / 10,
-            beta: beta / 100
+            alpha: 3.5,
+//            beta: 0.09
+//            beta: 0.33
+//            beta: 0.17
+            beta: beta
         ) { image in
             processing = false
             outputImage = image
